@@ -1,5 +1,5 @@
-myprivatecreds
-testtesting.*
-*testingtesting
-testingtesting*
+testing.*
+*testing
+testing*
 *.log
+/.metadata/
