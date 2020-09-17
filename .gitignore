@@ -1,5 +1,2 @@
-myprivatecreds
-testtesting.*
-*testingtesting
-testingtesting*
-*.log
+config.php
+.idea
