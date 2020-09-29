@@ -1,0 +1,6 @@
+testing.*
+*testing
+testing*
+*.log
+/.metadata/
+config.*
