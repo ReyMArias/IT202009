@@ -3,3 +3,4 @@ testing.*
 testing*
 *.log
 /.metadata/
+config.php
