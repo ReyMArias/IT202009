@@ -1,6 +1,6 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
     <form method="POST">
-        <label for="email">Email:</label>
+        <label for="email">Email or Username:</label>
         <input type="email" id="email" name="email" required/>
         <label for="p1">Password:</label>
         <input type="password" id="p1" name="password" required/>
@@ -22,10 +22,6 @@ if (isset($_POST["login"])) {
         $isValid = false;
         flash("Email or password missing");
     }
-    if (!strpos($email, "@")) {
-        $isValid = false;
-        //echo "<br>Invalid email<br>";
-        flash("Invalid email");
     }
     if ($isValid) {
         $db = getDB();
