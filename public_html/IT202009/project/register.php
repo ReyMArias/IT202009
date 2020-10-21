@@ -28,7 +28,7 @@ if (isset($_POST["register"])) {
         flash("Passwords don't match");
         $isValid = false;
     }
-    if (!isset($email) || !isset($password) || !isset($confirm)) {
+    if (!isset($email) || !isset($password) || !isset($confirm) || !isset($username)) {
         $isValid = false;
     }
     //TODO other validation as desired, remember this is the last line of defense
@@ -38,7 +38,7 @@ if (isset($_POST["register"])) {
         $db = getDB();
         if (isset($db)) {
             //here we'll use placeholders to let PDO map and sanitize our data
-            $stmt = $db->prepare("INSERT INTO Users(email, username, password) VALUES(:email,:username, :password)");
+            $stmt = $db->prepare("INSERT INTO Users(email, username, password) VALUES(:email, :username, :password)");
             //here's the data map for the parameter to data
             $params = array(":email" => $email, ":username" => $username, ":password" => $hash);
             $r = $stmt->execute($params);
@@ -74,9 +74,9 @@ if (!isset($username)) {
         <label for="user">Username (4-60 Characters):</label>
         <input type="text" id="user" name="username" required maxlength="60" value="<?php safer_echo($username); ?>"/>
         <label for="p1">Password (4-60 Characters):</label>
-        <input type="password" id="p1" name="password" required/>
+        <input type="password" id="p1" name="password" required maxlength="60"/>
         <label for="p2">Confirm Password:</label>
-        <input type="password" id="p2" name="confirm" required/>
+        <input type="password" id="p2" name="confirm" required maxlength="60"/>
         <input type="submit" name="register" value="Register"/>
     </form>
 <?php require(__DIR__ . "/partials/flash.php");
