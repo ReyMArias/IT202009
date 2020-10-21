@@ -11,8 +11,10 @@
 if (isset($_POST["login"])) {
     $email = null;
     $password = null;
+    $username = null;
     if (isset($_POST["email"])) {
         $email = $_POST["email"];
+        $username = $_POSY["email"];
     }
     if (isset($_POST["password"])) {
         $password = $_POST["password"];
