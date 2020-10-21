@@ -11,10 +11,8 @@
 if (isset($_POST["login"])) {
     $email = null;
     $password = null;
-    $username = null;
     if (isset($_POST["email"])) {
         $email = $_POST["email"];
-        $username = $_POST["email"];
     }
     if (isset($_POST["password"])) {
         $password = $_POST["password"];
@@ -22,7 +20,7 @@ if (isset($_POST["login"])) {
     $isValid = true;
     if (!isset($email) || !isset($password)) {
         $isValid = false;
-        flash("Email/Username or password missing");
+        flash("Email or password missing");
     }
 
     if ($isValid) {
