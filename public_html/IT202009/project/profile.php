@@ -122,7 +122,7 @@ if (isset($_POST["saved"])) {
         <label for="pw">Old Password</label>
         <input type="password" name="oldpassword"/>
         <label for="pw">New Password (4-60 Characters)</label>
-        <input type="password" name="password"/>
+        <input type="password" name="password" maxlength="60"/>
         <label for="cpw">Confirm Password</label>
         <input type="password" name="confirm"/>
         <input type="submit" name="saved" value="Save Profile"/>
