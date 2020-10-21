@@ -22,16 +22,15 @@ if (isset($_POST["login"])) {
     $isValid = true;
     if (!isset($email) || !isset($password)) {
         $isValid = false;
-        flash("Email or password missing");
+        flash("Email/Username or password missing");
     }
 
     if ($isValid) {
         $db = getDB();
         if (isset($db)) {
-            $stmt = $db->prepare("SELECT id, email, username, password from Users WHERE email = :email LIMIT 1, username = :username LIMIT 1");
+            $stmt = $db->prepare("SELECT id, email, username, password from Users WHERE email = :email LIMIT 1");
 
             $params = array(":email" => $email);
-            $params = array(":username" => $username);
             $r = $stmt->execute($params);
             //echo "db returned: " . var_export($r, true);
             $e = $stmt->errorInfo();
