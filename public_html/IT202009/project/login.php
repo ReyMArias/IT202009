@@ -24,12 +24,7 @@ if (isset($_POST["login"])) {
         $isValid = false;
         flash("Email/Username or password missing");
     }
-    if (!strpos($email, "@") && (":username" != $username)) {
-        if (":username" == $username)
-        $isValid = false;
-        //echo "<br>Invalid email<br>";
-        flash("Invalid User");
-    }
+
     if ($isValid) {
         $db = getDB();
         if (isset($db)) {
