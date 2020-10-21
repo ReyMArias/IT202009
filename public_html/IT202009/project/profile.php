@@ -74,18 +74,22 @@ if (isset($_POST["saved"])) {
         }
         //password is optional, so check if it's even set
         //if so, then check if it's a valid reset request
-        if (!empty($_POST["password"]) && !empty($_POST["confirm"])) {
-            if ($_POST["password"] == $_POST["confirm"]) {
-                $password = $_POST["password"];
-                $hash = password_hash($password, PASSWORD_BCRYPT);
-                //this one we'll do separate
-                $stmt = $db->prepare("UPDATE Users set password = :password where id = :id");
-                $r = $stmt->execute([":id" => get_user_id(), ":password" => $hash]);
-                if ($r) {
-                    flash("Reset Password");
-                }
-                else {
-                    flash("Error resetting password");
+        if (!empty($_POST["oldpassword"])) {
+            if (!empty($_POST["oldpassword"]) == isset($_POST["password"])) {
+                if (!empty($_POST["password"]) && !empty($_POST["confirm"])) {
+                    if ($_POST["password"] == $_POST["confirm"]) {
+                        $password = $_POST["password"];
+                        $hash = password_hash($password, PASSWORD_BCRYPT);
+                        //this one we'll do separate
+                        $stmt = $db->prepare("UPDATE Users set password = :password where id = :id");
+                        $r = $stmt->execute([":id" => get_user_id(), ":password" => $hash]);
+                        if ($r) {
+                            flash("Reset Password");
+                        }
+                        else {
+                            flash("Error resetting password");
+                        }
+                    }
                 }
             }
         }
@@ -115,7 +119,9 @@ if (isset($_POST["saved"])) {
         <label for="username">Username</label>
         <input type="text" maxlength="60" name="username" value="<?php safer_echo(get_username()); ?>"/>
         <!-- DO NOT PRELOAD PASSWORD-->
-        <label for="pw">Password</label>
+        <label for="pw">Old Password</label>
+        <input type="password" name="oldpassword"/>
+        <label for="pw">New Password (4-60 Characters)</label>
         <input type="password" name="password"/>
         <label for="cpw">Confirm Password</label>
         <input type="password" name="confirm"/>
