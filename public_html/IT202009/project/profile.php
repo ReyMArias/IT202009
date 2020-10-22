@@ -75,7 +75,7 @@ if (isset($_POST["saved"])) {
         //password is optional, so check if it's even set
         //if so, then check if it's a valid reset request
         if (!empty($_POST["oldpassword"])) {
-            if (!empty($_POST["oldpassword"]) == isset($_POST["password"])) {
+            if (($_POST["oldpassword"]) == isset($_POST["password"])) {
                 if (!empty($_POST["password"]) && !empty($_POST["confirm"])) {
                     if ($_POST["password"] == $_POST["confirm"]) {
                         $password = $_POST["password"];
