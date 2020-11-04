@@ -1,3 +1,30 @@
+<html>
+<head>
+<style>
+
+#center{
+width: 80%;
+margin-left: auto;
+margin-right: auto;
+align-content:center;
+text-align:center;
+
+height:99%;
+padding:0px;
+}
+canvas, body{
+padding: 0px;
+margin:0px;
+}
+</style>
+</head>
+<body>
+<div id="center">
+<canvas id="canvas" width="600px" height="400px"></canvas>
+</div>
+<span id="endGame"></span>
+
+<script>
 // Arcade Shooter game
 
 // Get a reference to the canvas DOM element
@@ -107,7 +134,7 @@ function endGame() {
 }
 
 // Listen for keydown events
-canvas.addEventListener('keydown', function(event) {
+window.addEventListener('keydown', function(event) {
   event.preventDefault();
   if (event.keyCode === 38) { // UP
     up = true;
@@ -121,7 +148,7 @@ canvas.addEventListener('keydown', function(event) {
 });
 
 // Listen for keyup events
-canvas.addEventListener('keyup', function(event) {
+window.addEventListener('keyup', function(event) {
   event.preventDefault();
   if (event.keyCode === 38) { // UP 
     up = false;
@@ -243,3 +270,6 @@ function draw() {
 // Start the game
 menu();
 canvas.focus();
+</script>
+</body>
+</html>
