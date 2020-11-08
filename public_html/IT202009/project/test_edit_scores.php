@@ -52,6 +52,8 @@ if(isset($id)){
 ?>
 
 <form method="POST">
+	<label>ID</label>
+	<input type="number" min="1" name="id"/>
 	<label>Score</label>
 	<input type="number" min="1" name="score"/>
 	<input type="submit" name="save" value="Create"/>
