@@ -17,13 +17,11 @@ if (!has_role("Admin")) {
 if(isset($_POST["save"])){
 	//TODO add proper validation/checks
     $score = $_POST["score"];
-    $created = $_POST["created"];
 	$user = get_user_id();
 	$db = getDB();
-	$stmt = $db->prepare("INSERT INTO Scores (score, created, user_id) VALUES(:score, :created, :user)");
+	$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:score, :user)");
 	$r = $stmt->execute([
 		":score"=>$score,
-		":created"=>$created,
 		":user"=>$user
 	]);
 	if($r){
