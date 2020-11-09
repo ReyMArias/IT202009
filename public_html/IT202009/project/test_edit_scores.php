@@ -21,10 +21,9 @@ if(isset($_POST["save"])){
 	$user = get_user_id();
 	$db = getDB();
 	if(isset($id)){
-		$stmt = $db->prepare("INSERT INTO Scores (score, user_id, id) VALUES(:score, :user, :id)");
+		$stmt = $db->prepare("UPDATE Scores set score=:score where id=:id");
 		$r = $stmt->execute([
 			":score"=>$score,
-			":user"=>$user
 			":id"=>$id
 		]);
 		if($r){
