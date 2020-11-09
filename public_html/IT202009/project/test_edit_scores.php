@@ -21,10 +21,11 @@ if(isset($_POST["save"])){
 	$user = get_user_id();
 	$db = getDB();
 	if(isset($id)){
-		$stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES(:score, :user)");
+		$stmt = $db->prepare("INSERT INTO Scores (score, user_id, id) VALUES(:score, :user, :id)");
 		$r = $stmt->execute([
 			":score"=>$score,
 			":user"=>$user
+			":id"=>$id
 		]);
 		if($r){
 			flash("Updated successfully with id: " . $id);
@@ -52,8 +53,6 @@ if(isset($id)){
 ?>
 
 <form method="POST">
-	<label>ID</label>
-	<input type="number" min="1" name="id"/>
 	<label>Score</label>
 	<input type="number" min="1" name="score"/>
 	<input type="submit" name="save" value="Create"/>
