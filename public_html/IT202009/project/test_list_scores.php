@@ -35,11 +35,11 @@ if (isset($_POST["search"]) && !empty($query)) {
                 <div class="list-group-item">
                     <div>
                         <div>Score By:</div>
-                        <div><?php safer_echo($r["user_id"]); ?></div>
+                        <div><?php safer_echo($r["Users.username"]); ?></div>
                     </div>
                     <div>
                         <div>Score:</div>
-                        <div><?php getState($r["score"]); ?></div>
+                        <div><?php getState($r["Scores.score"]); ?></div>
                     </div>
                     <div>
                         <a type="button" href="test_edit_scores.php?id=<?php safer_echo($r['id']); ?>">Edit</a>
