@@ -29,7 +29,7 @@ if (isset($id)) {
 <?php if (isset($result) && !empty($result)): ?>
     <div class="card">
         <div class="card-title">
-            <?php safer_echo($result["user_id"]); ?>
+            <div>User ID: <?php safer_echo($result["user_id"]); ?></div>
         </div>
         <div class="card-body">
             <div>
