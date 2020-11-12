@@ -52,8 +52,13 @@ if(isset($id)){
 	$db = getDB();
 	$stmt = $db->prepare("SELECT * FROM PointHistory where id = :id");
 	$r = $stmt->execute([":id"=>$id]);
-	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);	
 }
+
+$db = getDB();
+$stmt = $db->prepare("SELECT score FROM Scores LIMIT 10");
+$r = $stmt->execute();
+$eggs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
