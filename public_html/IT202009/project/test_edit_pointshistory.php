@@ -55,26 +55,7 @@ if(isset($id)){
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-//get points for dropdown
-$db = getDB();
-$stmt = $db->prepare("SELECT id,score, user_id from Scores LIMIT 10");
-$r = $stmt->execute();
-$point_board = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
-<h3>Edit Score</h3>
-    <form method="POST">
-		<div>User:</div>
-        <div><?php safer_echo($r["username"]); ?></div>
-        <label>Score:</label>
-        <select name="score" value="<?php echo $result["score"];?>" >
-            <option value="-1">Decrease</option>
-			<option value="0">Increase</option>
-
-            <?php endforeach; ?>
-        </select>
-        <input type="submit" name="save" value="Update"/>
-    </form>
 
 <?php require(__DIR__ . "/partials/flash.php");
