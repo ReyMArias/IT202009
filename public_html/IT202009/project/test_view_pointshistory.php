@@ -32,9 +32,10 @@ if (isset($id)) {
         <div class="card-body">
             <div>
                 <p>Stats</p>
+                <div>User: <?php safer_echo($result["username"]); ?></div>
                 <div>Score: <?php safer_echo($result["score"]); ?></div>
+                <div>Score Change: <?php safer_echo($result["points_change"]); ?></div>
                 <div>Reason of Change: <?php safer_echo($result["reason"]); ?></div>
-                <div>Owned by: <?php safer_echo($result["username"]); ?></div>
             </div>
         </div>
     </div>

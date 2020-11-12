@@ -34,16 +34,10 @@ if (isset($_POST["search"]) && !empty($query)) {
             <?php foreach ($results as $r): ?>
                 <div class="list-group-item">
                     <div>
-                        <div>History Of:</div>
-                        <div><?php safer_echo($r["username"]); ?></div>
-                    </div>
-                    <div>
-                        <div>Score Changes:</div>
-                        <div><?php safer_echo($r["points_change"]); ?></div>
-                    </div>
-                    <div>
-                        <div>Reason:</div>
-                        <div><?php safer_echo($r["reason"]); ?></div>
+                        <div>User: <?php safer_echo($result["username"]); ?></div>
+                        <div>Score: <?php safer_echo($result["score"]); ?></div>
+                        <div>Score Change: <?php safer_echo($result["points_change"]); ?></div>
+                        <div>Reason of Change: <?php safer_echo($result["reason"]); ?></div>
                     </div>
                     <div>
                         <a type="button" href="test_edit_pointshistory.php?id=<?php safer_echo($r['id']); ?>">Edit</a>
