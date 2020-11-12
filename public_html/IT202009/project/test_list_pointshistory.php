@@ -14,7 +14,7 @@ if (isset($_POST["query"])) {
 }
 if (isset($_POST["search"]) && !empty($query)) {
     $db = getDB();
-    $stmt = $db->prepare("SELECT PointsHistory.id,points_change,reason, user_id, Users.username,Scores.score FROM PointsHistory JOIN Users on PointsHistory.user_id = Users.id LEFT JOIN Scores as score on PointHistory.score_id = score.id WHERE Users.username like :q LIMIT 10");
+    $stmt = $db->prepare("SELECT PointsHistory.id,points_change,reason, user_id, Users.username,FROM PointsHistory JOIN Users on PointsHistory.user_id = Users.id WHERE Users.username like :q LIMIT 10");
     $r = $stmt->execute([":q" => "%$query%"]);
     if ($r) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
