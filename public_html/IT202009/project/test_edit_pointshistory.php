@@ -61,6 +61,16 @@ $r = $stmt->execute();
 $eggs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
+    <h3>Edit Scores</h3>
+    <form method="POST">
+        <label>User:</label>
+        <input name="user_id" placeholder="Name" value="<?php echo $result["user_id"]; ?>"/>
+        <label>Increase/Decrease Points:</label>
+        <select name="points_changed" value="<?php echo $result["points_changed"];?>" >
+            <option value="-1">Decrease</option>
+			<option value="0">Increase</option>
+        </select>
+        <input type="submit" name="save" value="Update"/>
+    </form>
 
 <?php require(__DIR__ . "/partials/flash.php");
