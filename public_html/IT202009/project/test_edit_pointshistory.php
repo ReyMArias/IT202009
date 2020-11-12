@@ -63,13 +63,9 @@ $eggs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
     <h3>Edit Scores</h3>
     <form method="POST">
-        <label>User:</label>
-        <input name="user_id" placeholder="Name" value="<?php echo $result["user_id"]; ?>"/>
+	<div>User: <?php safer_echo($result["user_id"]); ?></div>
         <label>Increase/Decrease Points:</label>
-        <select name="points_changed" value="<?php echo $result["points_changed"];?>" >
-            <option value="-1">Decrease</option>
-			<option value="0">Increase</option>
-        </select>
+        <input type="number" min="-100" max="100" name="points_change" value="<?php echo $result["points_change"]; ?>"/>
         <input type="submit" name="save" value="Update"/>
     </form>
 
