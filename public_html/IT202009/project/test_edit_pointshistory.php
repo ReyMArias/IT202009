@@ -56,7 +56,7 @@ if(isset($id)){
 }
 
 $db = getDB();
-$stmt = $db->prepare("SELECT score FROM Scores LIMIT 10");
+$stmt = $db->prepare("SELECT score FROM Scores AND user_id from User LIMIT 10");
 $r = $stmt->execute();
 $eggs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
