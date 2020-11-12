@@ -12,7 +12,7 @@ if (!has_role("Admin")) {
         <label>Points Change</label>
         <input type="number" min="1" name="points_change"/>
 		<label>Reason</label>
-        <input name="name" max="60" placeholder="reason"/>
+        <input type="text" max="60" placeholder="win, lose, purchase, etc"/>
         <input type="submit" name="save" value="Create"/>
     </form>
 
