@@ -25,7 +25,7 @@ if(isset($_POST["save"])){
 	$user = get_user_id();
 	$db = getDB();
 	if(isset($id)){
-		$stmt = $db->prepare("UPDATE PointHistory set points_change=:points_change, reason=:reason where id=:id");
+		$stmt = $db->prepare("UPDATE PointsHistory set points_change=:points_change, reason=:reason where id=:id");
 		$r = $stmt->execute([
 			":points_change"=>$points_change,
 			"reason"=>$reason,
