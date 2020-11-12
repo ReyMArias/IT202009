@@ -10,7 +10,7 @@ if (!has_role("Admin")) {
 <h3>Create Point History</h3>
     <form method="POST">
         <label>Points Change</label>
-        <input type="number" min="1" name="pointchange"/>
+        <input type="number" min="1" name="points_change"/>
 		<label>Reason</label>
         <input name="name" max="60" placeholder="reason"/>
         <input type="submit" name="save" value="Create"/>
@@ -19,13 +19,13 @@ if (!has_role("Admin")) {
 <?php
 if(isset($_POST["save"])){
 	//TODO add proper validation/checks
-	$pointchange = $_POST["pointchange"];
+	$points_change = $_POST["points_change"];
 	$reason = $_POST["reason"];
 	$user = get_user_id();
 	$db = getDB();
-	$stmt = $db->prepare("INSERT INTO PointsHistory (pointchange, reason, user_id) VALUES(:pointchange, :reason, :user)");
+	$stmt = $db->prepare("INSERT INTO PointsHistory (points_change, reason, user_id) VALUES(:points_change, :reason, :user)");
 	$r = $stmt->execute([
-		":pointchange"=>$pointchange,
+		":points_change"=>$points_change,
 		":reason"=>$reason,
 		":user"=>$user
 	]);
