@@ -57,7 +57,7 @@ if(isset($id)){
 
 //get points for dropdown
 $db = getDB();
-$stmt = $db->prepare("SELECT id,score, user_id, User.username from Scores JOIN Users on Scores.user_id = User.id LIMIT 10");
+$stmt = $db->prepare("SELECT id,score, user_id from Scores LIMIT 10");
 $r = $stmt->execute();
 $point_board = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
