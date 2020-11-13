@@ -67,7 +67,10 @@ if (isset($_POST["search"]) && !empty($query)) {
 
             </body>
         </html>
-                
+                <div>
+                    <a type="button" href="test_edit_pointshistory.php?id=<?php safer_echo($r['id']); ?>">Edit</a>
+                    <a type="button" href="test_view_pointshistory.php?id=<?php safer_echo($r['id']); ?>">View</a>
+                </div>                
                 
                 </div>
             <?php endforeach; ?>
