@@ -61,14 +61,12 @@ if (isset($_POST["search"]) && !empty($query)) {
                 <tr>
                     <td><?php safer_echo($r["username"]); ?></td>
                     <td><?php safer_echo($r["points_change"]); ?></td>
-                    <td><?php safer_echo($r["Reason"]); ?></td>
-                </tr>
-
+                    <td><?php safer_echo($r["reason"]); ?></td>
                 </tr>
                 </table>
 
-                </body>
-                </html>
+            </body>
+        </html>
                 
                 
                 </div>
