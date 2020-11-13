@@ -36,6 +36,9 @@ if (isset($_POST["search"]) && !empty($query)) {
             </div>
             <?php foreach ($results as $r): ?>
                 <div class="list-group-item">
+                <div>History Of:</div>
+                        <div><?php safer_echo($r["username"]); ?></div>
+                    </div>
                     <div>
                         <div>Score Change:</div>
                         <div><?php safer_echo($r["points_change"]); ?></div>
