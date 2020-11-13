@@ -14,7 +14,7 @@ if (isset($_POST["query"])) {
 }
 if (isset($_POST["search"]) && !empty($query)) {
     $db = getDB();
-    $stmt = $db->prepare("SELECT PointsHistory.id,points_change,reason, user_id, Users.username, Scores.score as score FROM PointsHistory JOIN Users on PointsHistory.user_id = Users.id JOIN Scores on PointsHistory.user_id = Scores.user_id WHERE Users.username like :q");
+    $stmt = $db->prepare("SELECT PointsHistory.id,points_change,reason, user_id, Users.username as score FROM PointsHistory JOIN Users on PointsHistory.user_id = Users.id WHERE Users.username like :q");
     $r = $stmt->execute([":q" => "%$query%"]);
     if ($r) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -36,10 +36,7 @@ if (isset($_POST["search"]) && !empty($query)) {
                 <div>History Of:</div>
                         <div><?php safer_echo($r["username"]); ?></div>
                     </div>
-                    <div>
-                        <div>Score:</div>
-                        <div><?php safer_echo($r["score"]); ?></div>
-                    </div>
+
                     <div>
                         <div>Score Change:</div>
                         <div><?php safer_echo($r["points_change"]); ?></div>
