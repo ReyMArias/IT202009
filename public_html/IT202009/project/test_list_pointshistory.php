@@ -31,11 +31,11 @@ if (isset($_POST["search"]) && !empty($query)) {
 <div class="results">
     <?php if (count($results) > 0): ?>
         <div class="list-group">
+        <div>History Of:</div>
+                <div><?php safer_echo($r["username"]); ?></div>
+            </div>
             <?php foreach ($results as $r): ?>
                 <div class="list-group-item">
-                <div>History Of:</div>
-                        <div><?php safer_echo($r["username"]); ?></div>
-                    </div>
                     <div>
                         <div>Score Change:</div>
                         <div><?php safer_echo($r["points_change"]); ?></div>
