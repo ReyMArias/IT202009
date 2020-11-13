@@ -17,7 +17,7 @@ if (isset($_GET["id"])) {
 $result = [];
 if (isset($id)) {
     $db = getDB();
-    $stmt = $db->prepare("SELECT PointsHistory.id,PointsHistory.reason, points_change, Users.username, Scores.score as score FROM PointsHistory JOIN Users on PointsHistory.user_id = Users.id JOIN Scores on PointsHistory.user_id = Scores.user_id where PointsHistory.id = :id");
+    $stmt = $db->prepare("SELECT PointsHistory.id,PointsHistory.reason, PointsHistory.user_id, points_change, Users.username, Scores.score as score FROM PointsHistory JOIN Users on PointsHistory.user_id = Users.id JOIN Scores on PointsHistory.user_id = Scores.user_id where PointsHistory.id = :id");
     $r = $stmt->execute([":id" => $id]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$result) {
@@ -36,6 +36,7 @@ if (isset($id)) {
                 <div>Points Change: <?php safer_echo($result["points_change"]); ?></div>
                 <div>Reason of Change: <?php safer_echo($result["reason"]); ?></div>
                 <div>Owned by: <?php safer_echo($result["username"]); ?></div>
+                <div>User ID: <?php safer_echo($result["user_id"]); ?></div>
             </div>
         </div>
     </div>
