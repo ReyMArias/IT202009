@@ -30,52 +30,14 @@ if (isset($id)) {
 <?php if (isset($result) && !empty($result)): ?>
     <div class="card">
         <div class="card-body">
-            <html>
-            <head>
-            <style>
-            table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-            }
-            td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-            }
-            tr:nth-child(even) {
-            background-color: #dddddd;
-            }
-            </style>
-            </head>
-            <body>
-            <h2>Stats</h2>        
-                <table>
-                <tr>
-                    <th>Username</th>
-                    <th><?php safer_echo($r["username"]); ?></th>
-                </tr>
-                <tr>
-                    <td>User ID</td>
-                    <td><?php safer_echo($r["user_id"]); ?></td>
-                </tr>
-                <tr>
-                    <td>Points Changed</td>
-                    <td><?php safer_echo($r["points_change"]); ?></td>
-                </tr>
-                <tr>
-                    <td>Reason</td>
-                    <td><?php safer_echo($r["reason"]); ?></td>
-                </tr>
-                <tr>
-                    <td>Change Date</td>
-                    <td><?php safer_echo($r["created"]); ?></td>
-                </tr>
-                </table>
-
-            </body>
-        </html>
-            
+            <div>
+                <p>Stats</p>
+                <div>Change Date: <?php safer_echo($result["created"]); ?></div>
+                <div>Points Change: <?php safer_echo($result["points_change"]); ?></div>
+                <div>Reason of Change: <?php safer_echo($result["reason"]); ?></div>
+                <div>Owned by: <?php safer_echo($result["username"]); ?></div>
+                <div>User ID: <?php safer_echo($result["user_id"]); ?></div>
+            </div>
         </div>
     </div>
 <?php else: ?>
