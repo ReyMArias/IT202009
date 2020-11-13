@@ -31,58 +31,44 @@ if (isset($_POST["search"]) && !empty($query)) {
 <div class="results">
     <?php if (count($results) > 0): ?>
         <div class="list-group">
+        <html>
+            <head>
+            <style>
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+            </style>
+            </head>
+            <body>
+            <h2>Points History</h2>        
             <?php foreach ($results as $r): ?>
-                <div class="list-group-item">
-                <div>History Of:</div>
-                        <div><?php safer_echo($r["username"]); ?></div>
-                    </div>
-                    <div>
-                        <div>Score Change:</div>
-                        <div><?php safer_echo($r["points_change"]); ?></div>
-                    </div>
-                    <div>
-                        <div>Reason:</div>
-                        <div><?php safer_echo($r["reason"]); ?></div>
-                    <div>
-                        <a type="button" href="test_edit_pointshistory.php?id=<?php safer_echo($r['id']); ?>">Edit</a>
-                        <a type="button" href="test_view_pointshistory.php?id=<?php safer_echo($r['id']); ?>">View</a>
-                    </div>
-                
-                
-                <style>
-                table {
-                font-family: arial, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-                }
-                td, th {
-                border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;
-                }
-                tr:nth-child(even) {
-                background-color: #dddddd;
-                }
-                </style>
-                </head>
-                <body>
-
-                <h2>Points History</h2>
-
                 <table>
                 <tr>
                     <th>Username</th>
                     <th>Points Change</th>
-                    <th>Reason</th>
+                    <th>History</th>
                 </tr>
                 <tr>
-                    <td><?php safer_echo($r["username"]); ?></td>
-                    <td><?php safer_echo($r["points_change"]); ?></td>
-                    <td><?php safer_echo($r["reason"]); ?></td>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
                 </tr>
 
                 </tr>
                 </table>
+
+                </body>
+                </html>
                 
                 
                 </div>
