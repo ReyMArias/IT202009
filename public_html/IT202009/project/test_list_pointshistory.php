@@ -36,7 +36,10 @@ if (isset($_POST["search"]) && !empty($query)) {
                 <div>History Of:</div>
                         <div><?php safer_echo($r["username"]); ?></div>
                     </div>
-
+                    <div>
+                        <div>Score:</div>
+                        <div><?php safer_echo($r["PlayerScore"]); ?></div>
+                    </div>
                     <div>
                         <div>Score Change:</div>
                         <div><?php safer_echo($r["points_change"]); ?></div>
