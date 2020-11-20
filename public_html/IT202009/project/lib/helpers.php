@@ -69,7 +69,7 @@ function getMessages() {
 }
 
 function getURL($path){
-    if (substr($path, 0, 1) == "/"{
+    if (substr($path, 0, 1) == "/"){
         return $path;
     }
     return $_SERVER["CONTEXT_PREFIX"] . "/IT202009/project/$path";
