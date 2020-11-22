@@ -19,6 +19,7 @@ require_once(__DIR__ . "/../lib/helpers.php");
         <?php endif; ?>
         <?php if (is_logged_in()): ?>
             <li><a href="<?php echo getURL("profile.php"); ?>">Profile</a></li>
+            <li><a href="<?php echo getURL("gamething.html"); ?>">Play</a></li>
             <li><a href="<?php echo getURL("logout.php"); ?>">Logout</a></li>
         <?php endif; ?>
     </ul>
