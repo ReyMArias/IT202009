@@ -15,7 +15,7 @@ $results = [];
 
 $stmt = $db->prepare("SELECT id, score, user_id, FROM Scores ORDER BY id desc WHERE user_id = :id LIMIT 10");
 $stmt->execute([":id" => get_user_id()]);
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <form method="POST">
@@ -28,7 +28,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="list-group-item">
                     <div>
                         <div>Score:</div>
-                        <div><?php safer_echo($result["score"]); ?></div>
+                        <div><?php safer_echo($results["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
