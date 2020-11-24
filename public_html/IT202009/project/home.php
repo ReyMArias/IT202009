@@ -15,15 +15,9 @@ $results = [];
 
 $stmt = $db->prepare("SELECT id, score, user_id, FROM Scores ORDER BY id desc WHERE user_id = :id LIMIT 10");
 $stmt->execute([":id" => get_user_id()]);
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-if ($result) {
-    $score = $result["score"];
-}
-else {
-//else for $isValid, though don't need to put anything here since the specific failure will output the message
-}
-
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <form method="POST">
     <label>View Player's Score History</label>
 </form>
