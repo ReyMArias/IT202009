@@ -10,6 +10,8 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 
 <?php
 $db = getDB();
+$results = [];
+
 
 $stmt = $db->prepare("SELECT Scores.id,score, user_id, Users.username FROM Scores ORDER BY id desc JOIN Users on Scores.user_id = Users.id WHERE id = :id LIMIT 1");
 $stmt->execute([":id" => get_user_id()]);
@@ -25,7 +27,7 @@ else {
 <form method="POST">
     <label>View Player's Score History</label>
 </form>
-<div class="score">
+<div class="results">
     <?php if (count($results) > 0): ?>
         <div class="list-group">
             <?php foreach ($results as $r): ?>
