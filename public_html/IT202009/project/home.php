@@ -9,26 +9,24 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
     <p>Welcome, <?php echo $email; ?></p>
 
 <?php
-$query = "";
+$db = getDB();
+$score = null;
 $results = [];
-if (isset($_POST["query"])) {
-    $query = $_POST["query"];
+
+
+$stmt = $db->prepare("SELECT Scores.id,score, user_id, Users.username FROM Scores ORDER BY id desc JOIN Users on Scores.user_id = Users.id WHERE id = :id LIMIT 1");
+$stmt->execute([":id" => get_user_id()]);
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($result) {
+    $score = $result["score"];
 }
-if (isset($_POST["search"]) && !empty($query)) {
-    $db = getDB();
-    $stmt = $db->prepare("SELECT Scores.id,score, user_id, Users.username FROM Scores JOIN Users on Scores.user_id = Users.id WHERE Users.username like :q LIMIT 10");
-    $r = $stmt->execute([":q" => "%$query%"]);
-    if ($r) {
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    else {
-        flash("There was a problem fetching the results");
-    }
+else {
+//else for $isValid, though don't need to put anything here since the specific failure will output the message
 }
+
 ?>
 <form method="POST">
-    <input name="query" placeholder="Search" value="<?php safer_echo($query); ?>"/>
-    <input type="submit" value="Search" name="search"/>
+    <label>View Player's Score History</label>
 </form>
 <div class="results">
     <?php if (count($results) > 0): ?>
