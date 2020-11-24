@@ -10,9 +10,6 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 
 <?php
 $db = getDB();
-$score = null;
-$results = [];
-
 
 $stmt = $db->prepare("SELECT Scores.id,score, user_id, Users.username FROM Scores ORDER BY id desc JOIN Users on Scores.user_id = Users.id WHERE id = :id LIMIT 1");
 $stmt->execute([":id" => get_user_id()]);
@@ -35,7 +32,7 @@ else {
                 <div class="list-group-item">
                     <div>
                         <div>Score:</div>
-                        <div><?php safer_echo($sore); ?></div>
+                        <div><?php safer_echo($result["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
