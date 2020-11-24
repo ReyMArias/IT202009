@@ -13,7 +13,7 @@ $db = getDB();
 $results = [];
 
 
-$stmt = $db->prepare("SELECT id, score, user_id, FROM Scores ORDER BY id desc WHERE id = :id LIMIT 10");
+$stmt = $db->prepare("SELECT id, score, user_id, FROM Scores ORDER BY id desc WHERE user_id = :id LIMIT 10");
 $stmt->execute([":id" => get_user_id()]);
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($result) {
