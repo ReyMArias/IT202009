@@ -25,7 +25,7 @@ else {
 <form method="POST">
     <label>View Player's Score History</label>
 </form>
-<div class="results">
+<div class="score">
     <?php if (count($results) > 0): ?>
         <div class="list-group">
             <?php foreach ($results as $r): ?>
