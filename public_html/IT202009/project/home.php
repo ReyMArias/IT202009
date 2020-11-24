@@ -13,7 +13,7 @@ $db = getDB();
 $results = [];
 
 
-$stmt = $db->prepare("SELECT Scores.id,score, user_id, Users.username FROM Scores ORDER BY id desc JOIN Users on Scores.user_id = Users.id WHERE id = :id LIMIT 1");
+$stmt = $db->prepare("SELECT Scores.id,score, user_id, FROM Scores ORDER BY id desc WHERE id = :id LIMIT 1");
 $stmt->execute([":id" => get_user_id()]);
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($result) {
