@@ -18,7 +18,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <form method="POST">
-    <label>View Player's Score History</label>
+    <label>Last 10 Scores</label>
 </form>
 <div class="results">
     <?php if (count($results) > 0): ?>
