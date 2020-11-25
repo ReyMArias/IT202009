@@ -27,7 +27,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="list-group-item">
                     <div>
                         <div>Score:</div>
-                        <div><?php safer_echo("score"); ?></div>
+                        <div><?php safer_echo($results["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
