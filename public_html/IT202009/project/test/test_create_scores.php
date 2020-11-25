@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . "/partials/nav.php"); ?>
+<?php require_once(__DIR__ . "/../partials/nav.php"); ?>
 <?php
 if (!has_role("Admin")) {
     //this will redirect to login and kill the rest of this script (prevent it from executing)
@@ -8,7 +8,7 @@ if (!has_role("Admin")) {
 ?>
 
 <form method="POST">
-	<label>Score</label>
+	<label>Create Score</label>
 	<input type="number" min="1" name="score"/>
 	<input type="submit" name="save" value="Create"/>
 </form>
@@ -33,4 +33,4 @@ if(isset($_POST["save"])){
 	}
 }
 ?>
-<?php require(__DIR__ . "/partials/flash.php");
+<?php require(__DIR__ . "/../partials/flash.php");
