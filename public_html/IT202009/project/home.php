@@ -12,7 +12,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 $db = getDB();
 $results = [];
 
-$stmt = $db->prepare("SELECT id, score, user_id FROM Scores WHERE Scores.user_id = :id LIMIT 10 ORDER BY id DESC");
+$stmt = $db->prepare("SELECT id, score, user_id FROM Scores WHERE Scores.user_id = :id ORDER BY score DESC LIMIT 10");
 $stmt->execute([":id" => get_user_id()]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
