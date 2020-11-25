@@ -23,7 +23,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="results">
     <?php if (count($results) > 0): ?>
         <div class="list-group">
-            <?php foreach ($results as $r): ?>
+            <?php foreach ($results as $results): ?>
                 <div class="list-group-item">
                     <div>
                         <div>Score:</div>
