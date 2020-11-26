@@ -14,13 +14,13 @@ $results = [];
 $today = date("Y/m/d h:i:s")
 $week = strtotime("-1 Weeks");
 $month = strtotime("-1 Months");
-?>
 
-<?
+
+
 $stmt = $db->prepare("SELECT id, score, user_id FROM Scores WHERE Scores.user_id = :id ORDER BY score DESC LIMIT 10");
 $stmt->execute([":id" => get_user_id()]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
+
 
 <form method="POST">
     <label>Last 10 Scores</label>
@@ -43,7 +43,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
-<?
+
 $stmt = $db->prepare("SELECT TOP 10 score FROM Scores ORDER BY score");
 $stmt->execute([":id" => get_user_id()]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
