@@ -17,7 +17,7 @@ $stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $db->prepare("SELECT score FROM Scores WHERE DATE BEWTEEN 2020-11-15 AND 2020-11-22 ORDER BY score DESC LIMIT 10");
+$stmt = $db->prepare("SELECT score FROM Scores WHERE created BETWEEN '2020-11-15' AND '2020-11-22' ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
