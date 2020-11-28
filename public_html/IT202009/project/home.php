@@ -18,7 +18,7 @@ $stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $db->prepare("SELECT score FROM Scores WHERE DATE BEWTEEN 2020-11-22 23:06:02 AND 2020-11-22 23:05:55 ORDER BY score DESC LIMIT 10");
+$stmt = $db->prepare("SELECT score as weekly FROM Scores WHERE DATE BEWTEEN 2020-11-22 23:06:02 AND 2020-11-22 23:05:55 ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -37,7 +37,7 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div>Score:</div>
                         <div><?php safer_echo($results["score"]); ?></div>
                         <div>Weekly Score:</div>
-                        <div><?php safer_echo($weekly["score"]); ?></div>
+                        <div><?php safer_echo($weekly["weekly"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
