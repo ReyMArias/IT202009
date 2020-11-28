@@ -34,7 +34,7 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="list-group-item">
                     <div>
                         <div>Score:</div>
-                        <div><?php safer_echo($result["score"]); ?></div>
+                        <div><?php safer_echo($results["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -45,7 +45,7 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="list-group-item">
                     <div>
                         <div>Weekly Score:</div>
-                        <div><?php safer_echo($w["score"]); ?></div>
+                        <div><?php safer_echo($weekly["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
