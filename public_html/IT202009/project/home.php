@@ -12,7 +12,6 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 $db = getDB();
 $results = [];
 $weekly = [];
-$monthly = [];
 
 $stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
 $stmt->execute();
