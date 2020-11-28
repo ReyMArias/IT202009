@@ -17,7 +17,7 @@ $stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $db->prepare("SELECT score FROM Scores WHERE DATE BEWTEEN 2020-11-22 23:06:02 AND 2020-11-22 23:05:55 ORDER BY score DESC LIMIT 10");
+$stmt = $db->prepare("SELECT score as weekly FROM Scores WHERE DATE BEWTEEN 2020-11-22 23:06:02 AND 2020-11-22 23:05:55 ORDER BY weekly DESC LIMIT 10");
 $stmt->execute();
 $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -30,7 +30,20 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="results">
     <?php if (count($results) > 0): ?>
         <div class="list-group">
-            <?php foreach ($weekly as $weekly): ?>
+            <?php foreach ($results as $results): ?>
+                <div class="list-group-item">
+                    <div>
+                        <div>Score:</div>
+                        <div><?php safer_echo($results["score"]); ?></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <p>No results</p>
+    <?php endif; ?>
+
+    <?php foreach ($weekly as $weekly): ?>
                 <div class="list-group-item">
                     <div>
                         <div>Weekly Score:</div>
@@ -42,5 +55,6 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php else: ?>
         <p>No results</p>
     <?php endif; ?>
+
 </div>
 <?php require(__DIR__ . "/partials/flash.php");
