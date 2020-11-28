@@ -11,7 +11,6 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 <?php
 $db = getDB();
 $results = [];
-$today = date("Y-m-d h:i:sa")
 
 $stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
 $stmt->execute();
