@@ -39,9 +39,7 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             <?php endforeach; ?>
         </div>
-    <?php else: ?>
-        <p>No results</p>
-    <?php endif; ?>
+
 
     <?php foreach ($weekly as $weekly): ?>
                 <div class="list-group-item">
@@ -52,6 +50,7 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             <?php endforeach; ?>
         </div>
+        
     <?php else: ?>
         <p>No results</p>
     <?php endif; ?>
