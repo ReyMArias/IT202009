@@ -11,11 +11,23 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 <?php
 $db = getDB();
 $results = [];
+$weekly = [];
+$monthly = [];
 
 $stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
+$stmt->execute();
+$weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
+$stmt->execute();
+$monthly = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
+
 
 <form method="POST">
     <label>Top Scores</label>
@@ -28,6 +40,10 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div>
                         <div>Score:</div>
                         <div><?php safer_echo($results["score"]); ?></div>
+                        <div>Weekly Score:</div>
+                        <div><?php safer_echo($weekly["score"]); ?></div>
+                        <div>Monthly:</div>
+                        <div><?php safer_echo($monthly["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
