@@ -12,13 +12,13 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 $db = getDB();
 $results = [];
 $weekly = [];
-$today = date('m/d/Y');
+$today = date("Y-m-d h:i:sa");
 
 $stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $db->prepare("SELECT score FROM Scores WHERE created BETWEEN '2020-11-22 23:05:55' AND $today ORDER BY score DESC LIMIT 10");
+$stmt = $db->prepare("SELECT score FROM Scores WHERE created BETWEEN '2020-11-22 23:05:55' AND 'date("Y-m-d h:i:sa");' ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
