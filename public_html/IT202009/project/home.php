@@ -12,6 +12,7 @@ if (isset($_SESSION["user"]) && isset($_SESSION["user"]["email"])) {
 $db = getDB();
 $results = [];
 $weekly = [];
+$monthly = [];
 
 $stmt = $db->prepare("SELECT score FROM Scores ORDER BY score DESC LIMIT 10");
 $stmt->execute();
@@ -20,6 +21,10 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $db->prepare("SELECT score FROM Scores WHERE created BETWEEN '2020-11-22 23:05:55' AND '2020-11-22 23:06:02' ORDER BY score DESC LIMIT 10");
 $stmt->execute();
 $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $db->prepare("SELECT score FROM Scores WHERE created BETWEEN '2020-10-22 23:05:55' AND '2020-11-22 23:06:02' ORDER BY score DESC LIMIT 10");
+$stmt->execute();
+$monthly = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -33,7 +38,7 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($results as $result): ?>
                 <div class="list-group-item">
                     <div>
-                        <div>Score:</div>
+                        <div>Top Scores:</div>
                         <div><?php safer_echo($result["score"]); ?></div>
                     </div>
                 </div>
@@ -44,8 +49,18 @@ $weekly = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($weekly as $w): ?>
                 <div class="list-group-item">
                     <div>
-                        <div>Weekly Score:</div>
+                        <div>Weekly Top Scores:</div>
                         <div><?php safer_echo($w["score"]); ?></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <?php foreach ($monthly as $m): ?>
+                <div class="list-group-item">
+                    <div>
+                        <div>Monthly Top Scores:</div>
+                        <div><?php safer_echo($m["score"]); ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
