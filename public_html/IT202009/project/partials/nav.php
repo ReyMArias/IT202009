@@ -46,5 +46,4 @@ require_once(__DIR__ . "/../lib/helpers.php");
             <li class="nav-item"><a class="nav-link" href="<?php echo getURL("logout.php"); ?>">Logout</a></li>
         <?php endif; ?>
     </ul>
-    <span class="navbar-text">Balance: <?php echo getBalance(); ?></span>
 </nav>
