@@ -112,7 +112,6 @@ if (isset($_POST["saved"])) {
 
 ?>
 
-?>
 <?php
 $db = getDB();
 $results = [];
