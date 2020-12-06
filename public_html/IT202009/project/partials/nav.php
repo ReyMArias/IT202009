@@ -14,23 +14,37 @@ require_once(__DIR__ . "/../lib/helpers.php");
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 
-<nav>
-    <ul class="nav">
-    <li><a href="<?php echo getURL("home.php"); ?>">Home</a></li>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="<?php echo getURL("home.php"); ?>">Home</a></li>
         <?php if (!is_logged_in()): ?>
-            <li><a href="<?php echo getURL("login.php"); ?>">Login</a></li>
-            <li><a href="<?php echo getURL("register.php"); ?>">Register</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo getURL("login.php"); ?>">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo getURL("register.php"); ?>">Register</a></li>
         <?php endif; ?>
         <?php if (has_role("Admin")): ?>
-            <li><a href="<?php echo getURL("test/test_create_scores.php"); ?>">Create Score</a></li>
-            <li><a href="<?php echo getURL("test/test_list_scores.php"); ?>">View Score</a></li>
-            <li><a href="<?php echo getURL("test/test_create_pointshistory.php"); ?>">Create Point History</a></li>
-            <li><a href="<?php echo getURL("test/test_list_pointshistory.php"); ?>">View Point History</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="nav-link" href="<?php echo getURL("test/test_create_scores.php"); ?>">Create
+                        Scores</a>
+                    <a class="nav-link" href="<?php echo getURL("test/test_list_scores.php"); ?>">View
+                        Scores</a>
+                    <a class="nav-link" href="<?php echo getURL("test/test_create_pointshistory.php"); ?>">Create
+                        Points History</a>
+
+                    <a class="nav-link" href="<?php echo getURL("test/test_list_pointshistory.php"); ?>">View
+                        Points History</a>
+                </div>
+            </li>
         <?php endif; ?>
         <?php if (is_logged_in()): ?>
-            <li><a href="<?php echo getURL("profile.php"); ?>">Profile</a></li>
-            <li><a href="<?php echo getURL("gamething.html"); ?>">Play</a></li>
-            <li><a href="<?php echo getURL("logout.php"); ?>">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo getURL("gamething.html"); ?>">Play</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo getURL("profile.php"); ?>">Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo getURL("logout.php"); ?>">Logout</a></li>
         <?php endif; ?>
     </ul>
+    <span class="navbar-text">Balance: <?php echo getBalance(); ?></span>
 </nav>
