@@ -38,8 +38,8 @@ if(isset($_POST["save"])){
 	}
 
 	$stmt = $db->prepare("UPDATE Users set points = (SELECT IFNULL(SUM(change), 0) FROM PointsHistory p where p.user_id = :id) WHERE id = :id");
-	$r = $stmt->execute([":points" => "points", ":id" => get_user_id()]);
-	if ($r) {
+	$p = $stmt->execute([":points" => "points", ":id" => get_user_id()]);
+	if ($p) {
 		flash("Updated points");
 	}
 	else {
