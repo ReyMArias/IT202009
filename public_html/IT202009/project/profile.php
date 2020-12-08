@@ -111,24 +111,25 @@ if (isset($_POST["saved"])) {
 }
 ?>
 
-<?php
-$db = getDB();
-$points = [];
-
-$stmt = $db->prepare("SELECT id, score, user_id FROM Scores WHERE Scores.user_id = :id ORDER BY score DESC LIMIT 10");
-$stmt->execute([":id" => get_user_id()]);
-$points = $stmt->fetch(PDO::FETCH_ASSOC);
-?>
-
-<h3> Current Points: </h3>
-<div><?php safer_echo($results["points"]); ?></div>
-
 
 <?php
 $db = getDB();
 $points = [];
 
 $stmt = $db->prepare("SELECT points FROM Users WHERE id = :id");
+$stmt->execute([":id" => get_user_id()]);
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+<div>
+    <div>Current Points:</div>
+    <div><?php safer_echo($results["points"]); ?></div>
+</div>
+
+<?php
+$db = getDB();
+$results = [];
+
+$stmt = $db->prepare("SELECT id, score, user_id FROM Scores WHERE Scores.user_id = :id ORDER BY score DESC LIMIT 10");
 $stmt->execute([":id" => get_user_id()]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
