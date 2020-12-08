@@ -109,14 +109,26 @@ if (isset($_POST["saved"])) {
         //else for $isValid, though don't need to put anything here since the specific failure will output the message
     }
 }
-
 ?>
 
 <?php
 $db = getDB();
-$results = [];
+$points = [];
 
 $stmt = $db->prepare("SELECT id, score, user_id FROM Scores WHERE Scores.user_id = :id ORDER BY score DESC LIMIT 10");
+$stmt->execute([":id" => get_user_id()]);
+$points = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+<h3> Current Points: </h3>
+<div><?php safer_echo($results["score"]); ?></div>
+
+
+<?php
+$db = getDB();
+$points = [];
+
+$stmt = $db->prepare("SELECT points FROM Users WHERE id = :id");
 $stmt->execute([":id" => get_user_id()]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -140,6 +152,8 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p>No results</p>
     <?php endif; ?>
 </div>
+
+<h1> Account Details </h1>
 
 <form method="POST">
         <div class="form-group">
