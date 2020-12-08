@@ -121,7 +121,7 @@ $points = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <h3> Current Points: </h3>
-<div><?php safer_echo($results["score"]); ?></div>
+<div><?php safer_echo($results["points"]); ?></div>
 
 
 <?php
