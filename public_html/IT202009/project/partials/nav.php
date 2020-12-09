@@ -41,6 +41,22 @@ require_once(__DIR__ . "/../lib/helpers.php");
             </li>
         <?php endif; ?>
         <?php if (is_logged_in()): ?>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Competitions
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="nav-link" href="<?php echo getURL("create_competition.php"); ?>">
+                        Create New Competition</a>
+                    <a class="nav-link" href="<?php echo getURL("competitions.php"); ?>">
+                        View All Competition</a>
+                    <a class="nav-link" href="<?php echo getURL("my_competitions.php"); ?>">
+                        View Your Competitions</a>
+                </div>
+            </li>
+
             <li class="nav-item"><a class="nav-link" href="<?php echo getURL("gamething.html"); ?>">Play</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo getURL("profile.php"); ?>">Profile</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo getURL("logout.php"); ?>">Logout</a></li>
