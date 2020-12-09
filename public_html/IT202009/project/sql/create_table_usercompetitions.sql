@@ -1,5 +1,4 @@
-
-CREATE TABLE IF NOT EXISTS  `UserCompetitions`
+CREATE TABLE IF NOT EXISTS  `F20_UserCompetitions`
 (
     `id`         int auto_increment not null,
     `competition_id` int,
