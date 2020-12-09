@@ -37,7 +37,7 @@ if(isset($_POST["save"])){
 		flash("Error creating: " . var_export($e, true));
 	}
 
-	$stmt = $db->prepare("UPDATE Users set points = (SELECT IFNULL(SUM(change), 0) FROM PointsHistory p where p.user_id = :id) WHERE id = :id");
+	$stmt = $db->prepare("UPDATE Users set points = (SELECT IFNULL(SUM(change), 0) FROM PointsHistory poiunts_change where points_change.user_id = :id) WHERE id = :id");
 	$p = $stmt->execute([":points" => "points", ":id" => get_user_id()]);
 	if ($p) {
 		flash("Updated points");
