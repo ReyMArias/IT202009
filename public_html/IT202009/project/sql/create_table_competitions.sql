@@ -1,4 +1,4 @@
-create table F20_Competitions(
+create table Competitions(
     id int auto_increment,
     name varchar(30) not null,
     created timestamp default CURRENT_TIMESTAMP,
