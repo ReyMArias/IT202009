@@ -9,7 +9,7 @@ if (!is_logged_in()) {
 <?php
 $db = getDB();
 if (isset($_POST["join"])) {
-    $balance = getBalance();
+    $balance = getPoints();
     //prevent user from joining expired or paid out comps
     $stmt = $db->prepare("select fee from F20_Competitions where id = :id && expires > current_timestamp && paid_out = 0");
     $r = $stmt->execute([":id" => $_POST["cid"]]);
