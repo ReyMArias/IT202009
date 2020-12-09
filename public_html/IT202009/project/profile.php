@@ -109,8 +109,21 @@ if (isset($_POST["saved"])) {
         //else for $isValid, though don't need to put anything here since the specific failure will output the message
     }
 }
-
 ?>
+
+
+<?php
+$db = getDB();
+$points = [];
+
+$stmt = $db->prepare("SELECT points FROM Users WHERE id = :id");
+$stmt->execute([":id" => get_user_id()]);
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+<div>
+    <div>Current Points:</div>
+    <div><?php safer_echo($results["points"]); ?></div>
+</div>
 
 <?php
 $db = getDB();
@@ -140,6 +153,8 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p>No results</p>
     <?php endif; ?>
 </div>
+
+<h1> Account Details </h1>
 
 <form method="POST">
         <div class="form-group">

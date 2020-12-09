@@ -36,6 +36,16 @@ if(isset($_POST["save"])){
 		$e = $stmt->errorInfo();
 		flash("Error creating: " . var_export($e, true));
 	}
+
+	$stmt = $db->prepare("UPDATE Users set points = (SELECT IFNULL(SUM(points_change), 0) FROM PointsHistory p where p.user_id = :id) WHERE id = :id");
+	$pch = $stmt->execute([":points" => "points", ":id" => get_user_id()]);
+	if ($pch) {
+		flash("Updated points");
+	}
+	else {
+		flash("Error updating points");
+	}
+	
 }
 ?>
 <?php require(__DIR__ . "/../partials/flash.php");
