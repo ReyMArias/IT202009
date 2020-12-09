@@ -76,8 +76,8 @@ function getURL($path){
 }
 
 function getPoints(){
-    if (is_logged_in() && isset($_SESSION["user"]["points"])) {
-        return $_SESSION["user"]["points"];
+    if (is_logged_in() && isset($_SESSION["points"])) {
+        return $_SESSION["points"];
     }
 }
 //end flash
