@@ -25,7 +25,7 @@ if (isset($_POST["name"])) {
         $days = (int)$_POST["duration"];
         $expires->add(new DateInterval("P" . $days . "D"));
         $expires = $expires->format("Y-m-d H:i:s");
-        $query = "INSERT INTO Competitions (name, duration, expires, cost, participants, min_score, first_place_per, second_place_per, third_place_per, fee, user_id, reward) VALUES(:name, :duration, :expires, :cost, :participants, :min_score, :fp, :sp, :tp, :fee, :uid, :reward)  update competitions set participants = (select count(1) from UserCompetitions where competition_id = :id) where id = :id ";
+        $query = "INSERT INTO Competitions (name, duration, expires, cost, participants, min_score, first_place_per, second_place_per, third_place_per, fee, user_id, reward) VALUES(:name, :duration, :expires, :cost, :participants, :min_score, :fp, :sp, :tp, :fee, :uid, :reward) UPDATE";
         $stmt = $db->prepare($query);
         $params = [
             ":name" => $_POST["name"],
@@ -74,6 +74,9 @@ if (isset($_POST["name"])) {
         else {
             flash("There was a problem creating a competition: " . var_export($stmt->errorInfo(), true), "danger");
         }
+
+        $stmt = $db->prepare("UPDATE competitions set participants = (select count(1) from UserCompetitions where competition_id = :id) where id = :id");
+        $stmt->execute();
     }
 }
 ?>
