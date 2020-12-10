@@ -50,7 +50,7 @@ else {
 }
 
 $stmt = $db->prepare("UPDATE Competitions set participants = (select count(1) from UserCompetitions where competition_id = :id) where id = :id");
-$a = $stmt->execute();
+$a = $stmt->execute(":id" => "competition_id");
 if ($a) {
     flash("it worked", "success");
 }
