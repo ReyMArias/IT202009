@@ -20,7 +20,7 @@ if (isset($_POST["name"])) {
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $balance = $result;
+    $balance = ["points"];
     if ($cost > $balance) {
         flash("You can't afford to create this competition", "warning");
     }
