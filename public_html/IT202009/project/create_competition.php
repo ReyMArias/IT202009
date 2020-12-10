@@ -110,7 +110,7 @@ if (isset($_POST["name"])) {
                 <label for="f">Entry Fee</label>
                 <input id="f" name="fee" type="number" class="form-control"/>
             </div>
-            <input type="submit" class="btn btn-success" value="Create (Cost: 1)"/>
+            <input type="submit" class="btn btn-success" value="Create (Cost: 1 Point)"/>
         </form>
     </div>
 <?php require(__DIR__ . "/partials/flash.php");

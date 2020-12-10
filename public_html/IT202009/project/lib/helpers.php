@@ -75,10 +75,12 @@ function getURL($path){
     return $_SERVER["CONTEXT_PREFIX"] . "/IT202009/project/$path";
 }
 
-function getPoints(){
-    if (is_logged_in() && isset($_SESSION["points"])) {
-        return $_SESSION["points"];
+function getPoints() {
+    if (is_logged_in() && isset($_SESSION["user"]["points"])) {
+        return $_SESSION["user"]["points"];
     }
+    return 0;
 }
+
 //end flash
 ?>
