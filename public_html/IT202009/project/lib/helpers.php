@@ -81,7 +81,7 @@ function getPoints(){
     $stmt->execute([":id"=>get_user_id()]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return "points";
+    return $result["points"];
 }
 //end flash
 ?>
