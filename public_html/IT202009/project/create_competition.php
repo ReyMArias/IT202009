@@ -15,7 +15,12 @@ if (isset($_POST["name"])) {
     }
     $cost++;
     //TODO other validation
-    $balance = getPoints();
+    $db = getDB();
+    $stmt = $db->prepare("SELECT points FROM User where id=:id");
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $balance = $result;
     if ($cost > $balance) {
         flash("You can't afford to create this competition", "warning");
     }
