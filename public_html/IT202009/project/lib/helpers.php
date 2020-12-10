@@ -77,7 +77,7 @@ function getURL($path){
 
 function getPoints(){
     $db = getDB();
-    $stmt = $db->prepare("SELECT points FROM User where id=:id");
+    $stmt = $db->prepare("SELECT points FROM Users where id=:id");
     $stmt->execute([":id"=>get_user_id()]);
     flash(var_export($stmt->errorInfo(), true));
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
