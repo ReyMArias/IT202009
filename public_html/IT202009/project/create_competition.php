@@ -68,7 +68,7 @@ if (isset($_POST["name"])) {
         }
         $r = $stmt->execute($params);
         if ($r) {
-            flash("Successfully created competition", "success");
+            flash("Successfully created competition. You and others can now join it", "success");
             die(header("Location: #"));
         }
         else {
