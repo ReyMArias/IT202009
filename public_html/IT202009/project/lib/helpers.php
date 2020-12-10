@@ -82,6 +82,7 @@ function getPoints(){
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $result["points"];
+    flash(var_export($stmt->errorInfo(), true)); 
 }
 //end flash
 ?>
