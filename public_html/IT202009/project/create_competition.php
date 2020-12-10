@@ -22,18 +22,16 @@ if (isset($_POST["name"])) {
     else {
         $db = getDB();
         $expires = new DateTime();
-        $currentParticipants = (int)$_POST["participants"];
         $days = (int)$_POST["duration"];
         $expires->add(new DateInterval("P" . $days . "D"));
         $expires = $expires->format("Y-m-d H:i:s");
-        $query = "INSERT INTO Competitions (name, duration, expires, cost, participants, min_score, first_place_per, second_place_per, third_place_per, fee, user_id, reward) VALUES(:name, :duration, :expires, :cost, :participants, :min_score, :fp, :sp, :tp, :fee, :uid, :reward)";
+        $query = "INSERT INTO Competitions (name, duration, expires, cost, participants, min_score, first_place_per, second_place_per, third_place_per, fee, user_id, reward) VALUES(:name, :duration, :expires, :cost, :participants, :min_score, :fp, :sp, :tp, :fee, :uid, :reward)  update competitions set participants = (select count(1) from UserCompetitions where competition_id = :id) where id = :id ";
         $stmt = $db->prepare($query);
         $params = [
             ":name" => $_POST["name"],
             ":duration" => $days,
             ":expires" => $expires,
             ":cost" => $cost,
-            ":participants" => $currentParticipants+1;
             ":min_score" => $_POST["min_score"],
             ":uid" => get_user_id(),
             ":fee" => $_POST["fee"],
