@@ -49,10 +49,8 @@ else {
     flash("There was a problem looking up competitions: " . var_export($stmt->errorInfo(), true), "danger");
 }
 
-$compID = "id";
-
 $stmt = $db->prepare("UPDATE Competitions set participants = (select count(1) from UserCompetitions where competition_id = :id) where id = :id");
-$a = $stmt->execute([":id"=>$compId]);
+$a = $stmt->execute([":id"=>$"competition_id"]);
 if ($a) {
     flash("it worked", "success");
 }
