@@ -11,7 +11,7 @@ $db = getDB();
 if (isset($_POST["join"])) {
     $balance = getPoints();
     //prevent user from joining expired or paid out comps
-    $stmt = $db->prepare("SELECT fee from Competitions where id = :id && expires > current_timestamp && paid_out = 0");
+    $stmt = $db->prepare("select fee from Competitions where id = :id && expires > current_timestamp && paid_out = 0");
     $r = $stmt->execute([":id" => $_POST["cid"]]);
     if ($r) {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -40,7 +40,7 @@ if (isset($_POST["join"])) {
         flash("Competition is unavailable", "warning");
     }
 }
-$stmt = $db->prepare("SELECT c.*, UC.user_id as reg FROM Competitions c LEFT JOIN (SELECT * FROM UserCompetitions where user_id = :id) as UC on c.id = UC.competition_id WHERE c.expires > current_timestamp AND paid_out = 0 ORDER BY expires ASC");
+$stmt = $db->prepare("SELECT c.*, UC.user_id as reg FROM Competitions c LEFT JOIN (SELECT * FROM UserCompetitions where user_id = :id) as UC on c.id = UC.competition_id WHERE c.expires > current_timestamp AND paid_out = 0 AND (UC.user_id = :id OR c.user_id = :id) ORDER BY expires ASC");
 $r = $stmt->execute([":id" => get_user_id(),]);
 if ($r) {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -50,7 +50,7 @@ else {
 }
 ?>
     <div class="container-fluid">
-        <h3>Competitions</h3>
+        <h3>My Competitions (Created and Registered)</h3>
         <div class="list-group">
             <?php if (isset($results) && count($results)): ?>
                 <div class="list-group-item font-weight-bold">
@@ -80,6 +80,9 @@ else {
                         <div class="row">
                             <div class="col">
                                 <?php safer_echo($r["name"]); ?>
+                                <?php if ($r["user_id"] == get_user_id()): ?>
+                                    (Created)
+                                <?php endif; ?>
                             </div>
                             <div class="col">
                                 <?php safer_echo($r["participants"]); ?>
