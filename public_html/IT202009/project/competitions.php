@@ -49,15 +49,6 @@ else {
     flash("There was a problem looking up competitions: " . var_export($stmt->errorInfo(), true), "danger");
 }
 
-$stmt = $db->prepare("UPDATE Competitions set participants = (select count(1) from UserCompetitions where competition_id = :id) where id = :id");
-$a = $stmt->execute(":id" => $compID);
-if ($a) {
-    flash("it worked", "success");
-}
-else {
-    flash("hey it failed " . var_export($stmt->errorInfo(), true), "danger");
-}
-
 ?>
     <div class="container-fluid">
         <h3>Competitions</h3>
