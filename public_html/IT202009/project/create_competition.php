@@ -74,6 +74,18 @@ if (isset($_POST["name"])) {
         else {
             flash("There was a problem creating a competition: " . var_export($stmt->errorInfo(), true), "danger");
         }
+
+        $compID = "id";
+
+        $stmt = $db->prepare("UPDATE Competitions set participants = (select count(1) from UserCompetitions where competition_id = :id) where id = :id");
+        $a = $stmt->execute([":id"=>$compId]);
+        if ($a) {
+            flash("it worked", "success");
+        }
+        else {
+            flash("hey it failed " . var_export($stmt->errorInfo(), true), "danger");
+        }
+
     }
 }
 ?>
