@@ -75,5 +75,13 @@ function getURL($path){
     return $_SERVER["CONTEXT_PREFIX"] . "/IT202009/project/$path";
 }
 
+function getPoints(){
+    $db = getDB();
+    $stmt = $db->prepare("SELECT points FROM Users where id=:id");
+    $stmt->execute([":id"=>get_user_id()]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result["points"];
+}
 //end flash
 ?>
