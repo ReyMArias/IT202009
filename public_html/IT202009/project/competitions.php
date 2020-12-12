@@ -58,7 +58,7 @@ $a = $stmt->execute([":id"=>$compId]);
 if ($a) {
     flash("it worked", "success");
     flash($compID);
-    flash("id");
+    flash(":id");
 }
 else {
     flash("hey it failed " . var_export($stmt->errorInfo(), true), "danger");
