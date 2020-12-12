@@ -83,5 +83,24 @@ function getPoints(){
 
     return $result["points"];
 }
+
+/*
+$curDate = date("Y-m-d h:i:sa");
+
+function payout(){
+    $db = getDB();
+    $stmt = $db->prepare("SELECT expires FROM Competitions where expires < date(Y-m-d h:i:sa)");
+    $stmt->execute([date => $curDate]);
+    $expired = $stmt->fetchall(PDO::FETCH_ASSOC);
+
+    if ($expired){
+        $stmt = $db->prepare("SELECT score set (SELECT IFNULL(SUM(points_change), 0)), user_id FROM Scores WHERE Scores.user_id = :id and created between Competitions.created and Competitions.expires ORDER BY score DESC LIMIT 3");
+        $stmt->execute([":id" => get_user_id()]);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+}
+*/
+
 //end flash
 ?>
