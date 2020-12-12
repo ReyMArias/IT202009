@@ -51,10 +51,10 @@ else {
 
 
 
-$compID = "id";
 
-$stmt = $db->prepare("UPDATE Competitions set participants = (select count(1) from UserCompetitions where competition_id = :id) where id = :id");
-$a = $stmt->execute([":id"=>$compId]);
+
+$stmt = $db->prepare("UPDATE Competitions set participants = (select user_id from UserCompetitions where competition_id = :id) where id = :id");
+$a = $stmt->execute([":id"=>get_user_id()]);
 if ($a) {
     flash("it worked", "success");
 }
