@@ -51,7 +51,7 @@ else {
 
 
 
-$compID = "id";
+$compID = 1;
 
 $stmt = $db->prepare("UPDATE Competitions set participants = (select count(user_id) from UserCompetitions where competition_id = :id) where id = :id");
 $a = $stmt->execute([":id"=>$compId]);
