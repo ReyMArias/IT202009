@@ -11,7 +11,7 @@ $db = getDB();
 if (isset($_POST["join"])) {
     $balance = getPoints();
     //prevent user from joining expired or paid out comps
-    $stmt = $db->prepare("SELECT fee from Competitions where id = :id && expires > current_timestamp && paid_out = 0");
+    $stmt = $db->prepare("SELECT fee from Competitions where id = :id && expires > current_timestamp && paid_out = 0 limit 10");
     $r = $stmt->execute([":id" => $_POST["cid"]]);
     if ($r) {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -63,6 +63,18 @@ if ($a) {
 else {
     flash("hey it failed" . var_export($stmt->errorInfo(), true), "danger");
 }
+
+$stmt = $db->prepare("UPDATE Competitions set reward = reward + (fee/2) where id = :id");
+$rew = $stmt->execute([":id"=>$compID]);
+if ($rew) {
+    flash("it worked", "success");
+    flash($compID);
+    flash($rew);
+}
+else {
+    flash("hey it failed" . var_export($stmt->errorInfo(), true), "danger");
+}
+
 
 
 
