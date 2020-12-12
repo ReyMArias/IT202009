@@ -54,14 +54,14 @@ else {
 $compID = 1;
 
 $stmt = $db->prepare("UPDATE Competitions set participants = (select count(user_id) from UserCompetitions where competition_id = :id) where id = :id");
-$a = $stmt->execute([":id"=>$compId]);
+$a = $stmt->execute([":id"=>$compID]);
 if ($a) {
     flash("it worked", "success");
     flash($compID);
-    flash(":id");
+
 }
 else {
-    flash("hey it failed " . var_export($stmt->errorInfo(), true), "danger");
+    flash("hey it failed" . var_export($stmt->errorInfo(), true), "danger");
 }
 
 
