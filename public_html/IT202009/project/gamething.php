@@ -278,11 +278,12 @@ $r = $stmt->execute($params);
 $stmt = $db->prepare("UPDATE Users set points = :points where id = :id");
 $s = $stmt->execute([":points" => $points, ":id" => get_user_id()]);
 
-$query = "INSERT INTO PointsHistory (user_id, points_change, reason) VALUES(:uid, :points_change, :reason)";
-$stmt = $db->prepare($query);
-$params = [
+$quory = "INSERT INTO PointsHistory (user_id, points_change, reason) VALUES(:uid, :points_change, :reason)";
+$stmt = $db->prepare($quory);
+$paroms = [
     ":uid" => get_user_id(),
     ":points_chane" => $score;
     ":reason" => "From game";
     ];
-$p = $stmt->execute($params);
+$p = $stmt->execute($paroms);
+?>
