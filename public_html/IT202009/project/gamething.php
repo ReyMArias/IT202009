@@ -122,9 +122,9 @@ function menu() {
 // Start the game
 function startGame() {
 	// Kick off the quadro spawn interval
-  timeoutIdQuad = setInterval(makequadro, timeBetweenEnemies * 4);
+  timeoutIdQuad = setInterval(makequadro, timeBetweenEnemies);
   // Make the first quadro
-  setTimeout(makequadro, 4000);
+  setTimeout(makequadro, 1000);
   // Kick off the draw loop
   draw();
   // Stop listening for click events
@@ -247,13 +247,13 @@ function draw() {
   context.fillText('Score: ' + score, 1, 25)
   // End or continue the game
 
-  /*
+  
   if (gameOver) {
     endGame();
   } else {
     window.requestAnimationFrame(draw);
   }
-*/
+
   window.requestAnimationFrame(draw);
 }
 
@@ -267,5 +267,22 @@ canvas.focus();
 <?php
 $db = getDB();
 
-$stmt = $db->prepare("UPDATE 'Users' set points=$score WHERE id=:id");
-$r = $stmt->execute([":id" => get_user_id()]);
+$query = "INSERT INTO Scores (user_id, score) VALUES(:uid, :score)";
+$stmt = $db->prepare($query);
+$params = [
+    ":uid" => get_user_id(),
+    ":score" => $score;
+    ];
+$r = $stmt->execute($params);
+
+$stmt = $db->prepare("UPDATE Users set points = :points where id = :id");
+$s = $stmt->execute([":points" => $points, ":id" => get_user_id()]);
+
+$query = "INSERT INTO PointsHistory (user_id, points_change, reason) VALUES(:uid, :points_change, :reason)";
+$stmt = $db->prepare($query);
+$params = [
+    ":uid" => get_user_id(),
+    ":points_chane" => $score;
+    ":reason" => "From game";
+    ];
+$p = $stmt->execute($params);
