@@ -57,7 +57,7 @@ require_once(__DIR__ . "/../lib/helpers.php");
                 </div>
             </li>
 
-            <li class="nav-item"><a class="nav-link" href="<?php echo getURL("gamething.html"); ?>">Play</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo getURL("gamething.php"); ?>">Play</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo getURL("profile.php"); ?>">Profile</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo getURL("logout.php"); ?>">Logout</a></li>
         <?php endif; ?>

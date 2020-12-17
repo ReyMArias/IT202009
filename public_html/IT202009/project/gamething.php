@@ -1,3 +1,12 @@
+<?php require_once(__DIR__ . "/partials/nav.php"); ?>
+<?php
+if (!is_logged_in()) {
+    //this will redirect to login and kill the rest of this script (prevent it from executing)
+    flash("You don't have permission to access this page");
+    die(header("Location: login.php"));
+}
+?>
+
 <html>
 <head>
 <style>
@@ -132,6 +141,7 @@ function endGame() {
   context.font = '24px Arial';
   context.textAlign = 'center';
   context.fillText('Game Over. Final Score: ' + score, canvas.width / 2, canvas.height / 2);
+  $score = score;
 }
 
 // Listen for keydown events
@@ -253,3 +263,9 @@ canvas.focus();
 </script>
 </body>
 </html>
+
+<?php
+$db = getDB();
+
+$stmt = $db->prepare("UPDATE 'Users' set points=$score WHERE id=:id");
+$r = $stmt->execute([":id" => get_user_id()]);
