@@ -30,7 +30,7 @@ margin:0px;
 </head>
 <body>
 <div id="center">
-<canvas id="canvas" width="400px" height="800px"></canvas>
+<canvas id="canvas" width="400px" height="900px"></canvas>
 </div>
 <span id="endGame"></span>
 
@@ -122,9 +122,9 @@ function menu() {
 // Start the game
 function startGame() {
 	// Kick off the quadro spawn interval
-  timeoutIdQuad = setInterval(makequadro, timeBetweenEnemies);
+  timeoutIdQuad = setInterval(makequadro, timeBetweenEnemies * 4);
   // Make the first quadro
-  setTimeout(makequadro, 1000);
+  setTimeout(makequadro, 4000);
   // Kick off the draw loop
   draw();
   // Stop listening for click events
@@ -141,7 +141,6 @@ function endGame() {
   context.font = '24px Arial';
   context.textAlign = 'center';
   context.fillText('Game Over. Final Score: ' + score, canvas.width / 2, canvas.height / 2);
-  $score = score;
 }
 
 // Listen for keydown events
@@ -172,7 +171,7 @@ window.addEventListener('keyup', function(event) {
 // Clear the canvas
 function erase() {
   context.fillStyle = '#FFFFFF';
-  context.fillRect(0, 0, 400, 800);
+  context.fillRect(0, 0, 400, 900);
 }
 
 // Shoot the bullet (if not already on screen)
@@ -253,8 +252,6 @@ function draw() {
   } else {
     window.requestAnimationFrame(draw);
   }
-
-  window.requestAnimationFrame(draw);
 }
 
 // Start the game
@@ -263,3 +260,5 @@ canvas.focus();
 </script>
 </body>
 </html>
+
+<?php require(__DIR__ . "/partials/flash.php");
