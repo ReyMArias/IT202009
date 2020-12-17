@@ -263,27 +263,3 @@ canvas.focus();
 </script>
 </body>
 </html>
-
-<?php
-$db = getDB();
-
-$query = "INSERT INTO Scores (user_id, score) VALUES(:uid, :score)";
-$stmt = $db->prepare($query);
-$params = [
-    ":uid" => get_user_id(),
-    ":score" => $score;
-    ];
-$r = $stmt->execute($params);
-
-$stmt = $db->prepare("UPDATE Users set points = :points where id = :id");
-$s = $stmt->execute([":points" => $points, ":id" => get_user_id()]);
-
-$quory = "INSERT INTO PointsHistory (user_id, points_change, reason) VALUES(:uid, :points_change, :reason)";
-$stmt = $db->prepare($quory);
-$paroms = [
-    ":uid" => get_user_id(),
-    ":points_chane" => $score;
-    ":reason" => "From game";
-    ];
-$p = $stmt->execute($paroms);
-?>
