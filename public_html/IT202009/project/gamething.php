@@ -30,7 +30,7 @@ margin:0px;
 </head>
 <body>
 <div id="center">
-<canvas id="canvas" width="400px" height="900px"></canvas>
+<canvas id="canvas" width="400px" height="800px"></canvas>
 </div>
 <span id="endGame"></span>
 
@@ -172,7 +172,7 @@ window.addEventListener('keyup', function(event) {
 // Clear the canvas
 function erase() {
   context.fillStyle = '#FFFFFF';
-  context.fillRect(0, 0, 400, 900);
+  context.fillRect(0, 0, 400, 800);
 }
 
 // Shoot the bullet (if not already on screen)
