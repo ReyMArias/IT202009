@@ -71,6 +71,8 @@ if (!isset($username)) {
 }
 ?>
 
+<!-- Site Theme -->
+
     <form method="POST">
         <div class="form-group">
             <label for="email">Email:</label>

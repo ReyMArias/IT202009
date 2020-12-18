@@ -1,4 +1,7 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
+
+<!-- Site theme -->
+
     <form method="POST">
         <div class="form-group">
             <label for="email">Email:</label>

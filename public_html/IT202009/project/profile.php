@@ -136,6 +136,9 @@ $stmt->execute([":id" => get_user_id()]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+
+<!-- Site Theme -->
+
 <form method="POST">
     <label>Last 10 Scores</label>
 </form>
