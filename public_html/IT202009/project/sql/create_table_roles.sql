@@ -8,3 +8,5 @@ CREATE TABLE IF NOT EXISTS  `Roles`
     `modified`   timestamp default current_timestamp on update current_timestamp,
     PRIMARY KEY (`id`)
 )
+
+/* User Rolls*/

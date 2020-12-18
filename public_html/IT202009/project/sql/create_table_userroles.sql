@@ -11,3 +11,5 @@ CREATE TABLE IF NOT EXISTS  `UserRoles`
     FOREIGN KEY (`role_id`) REFERENCES Roles(`id`),
     UNIQUE KEY (`user_id`, `role_id`)
 )
+
+/* User Rolls */
