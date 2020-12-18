@@ -12,6 +12,9 @@
     </form>
 
 <?php
+
+// login
+
 if (isset($_POST["login"])) {
     $email = null;
     $password = null;
