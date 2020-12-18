@@ -40,7 +40,7 @@ require_once(__DIR__ . "/../lib/helpers.php");
                 </div>
             </li>
         <?php endif; ?>
-        <?php if (is_logged_in()): ?>
+        <?php if (is_logged_in()): // security ?>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
