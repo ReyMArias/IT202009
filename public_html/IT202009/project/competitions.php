@@ -57,8 +57,6 @@ $stmt = $db->prepare("UPDATE Competitions set participants = (select count(user_
 $a = $stmt->execute([":id"=>$compID]);
 if ($a) {
     flash("it worked", "success");
-    flash($compID);
-    flash($a);
 }
 else {
     flash("hey it failed" . var_export($stmt->errorInfo(), true), "danger");
@@ -68,13 +66,12 @@ $stmt = $db->prepare("UPDATE Competitions set reward = reward + (fee/2) where id
 $rew = $stmt->execute([":id"=>$compID]);
 if ($rew) {
     flash("it worked", "success");
-    flash($compID);
-    flash($rew);
 }
 else {
     flash("hey it failed" . var_export($stmt->errorInfo(), true), "danger");
 }
 
+// no bugs
 
 
 
